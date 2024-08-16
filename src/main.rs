@@ -30,16 +30,20 @@ fn print_account(account: &Account) {
     println!("{:#?}", account);
 }
 
+fn change_account(account: &mut Account) {
+    account.balance = 10;
+
+    println!("{}", account.holder);
+}
+
 fn main() {
-    let account = Account::new(1, String::from("me"));
+    let mut account = Account::new(1, String::from("me"));
 
-    let account_ref1 = &account;
-    let account_ref2 = &account;
+    let account_ref = &mut account;
 
-    let other_account = account;
+    account.balance = 10;
 
-    print_account(&account_ref1);
-    print_account(&account_ref2);
+    change_account(account_ref);
 
     println!("{:#?}", account);
 }
