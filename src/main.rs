@@ -26,14 +26,20 @@ impl Bank {
     }
 }
 
-fn print_account(account: Account) {
+fn print_account(account: Account) -> Account {
     println!("{:#?}", account);
+    account
+}
+
+fn print_holder(holder: String) {
+    println!("{}", holder);
 }
 
 fn main() {
-    let bank = Bank::new();
+    let mut account = Account::new(1, String::from("me"));
 
-    let other_bank = bank;
+    account = print_account(account);
+    account = print_account(account);
 
-    println!("{:#$}", bank);
+    println!("{:#?}", account);
 }
